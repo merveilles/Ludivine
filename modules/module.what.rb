@@ -13,16 +13,19 @@ class Answer
 
         # Find answers
         $answer = _answer(topic)
+        $similar = _similar(topic)
         $parent = _parent($answer[2])
         $related = _related($answer[2])
+
+        if $similar then also = "\n#{$similar[1].to_s.capitalize} is also #{topic}." end
 
         if !$answer
         	return "I don't know what #{topic} is."
     	else
-    		if $parent && $related then return "#{topic.capitalize} is *#{$answer[2]}*, #{$parent[2]}, like _#{$related[1]}_." end
-    		if $parent then return "*#{topic.capitalize}* is #{$answer[2]}, #{$parent[2]}." end
-    		if $related then return "*#{topic.capitalize}* is #{$answer[2]}, like #{$related[1]}." end
-    		return "*#{topic.capitalize}* is #{$answer[2]}."
+    		if $parent && $related then return "#{topic.capitalize} is *#{$answer[2]}*, #{$parent[2]}, like _#{$related[1]}_. #{also}" end
+    		if $parent then return "*#{topic.capitalize}* is #{$answer[2]}, #{$parent[2]}. #{also}" end
+    		if $related then return "*#{topic.capitalize}* is #{$answer[2]}, like #{$related[1]}. #{also}" end
+    		return "*#{topic.capitalize}* is #{$answer[2]}. #{also}"
         end
 
         return ""
@@ -54,14 +57,4 @@ class Answer
 
 	def _related topic
 
-		thoughts = @memory.load(topic)
-        similars = []
-        thoughts.each do |thought|
-        	if thought[1] == $answer[1] then next end
-        	if thought[2] == $answer[2] then similars.push(thought) end
-        end
-		return similars.sample
-
-	end
-
-end
+		thoughts = @mem
