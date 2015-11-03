@@ -1,6 +1,9 @@
-class Answer
+#!/bin/env ruby
+# encoding: utf-8
 
-    # Available: moduleName,methodName,username,message
+#: Ask me about other users.
+
+class Answer
 
     def is
 
@@ -42,46 +45,6 @@ class Answer
         end
 
         return "I do not know you."
-
-    end
-
-    def told
-
-        matches = @message.match(/(.*)who told you that (.+) is (.+)/)
-        if matches == nil then return end
-        prefix, topic, meaning = matches.captures
-
-        return find_author(topic.strip(), meaning.strip(), "told me")
-        
-    end
-
-    def said
-
-        matches = @message.match(/(.*)who said that (.+) is (.+)/)
-        if matches == nil then return end
-        prefix, topic, meaning = matches.captures
-
-        return find_author(topic.strip(), meaning.strip(), "said")
-        
-    end
-
-    def find_author(topic, meaning, formulation)
-
-        if topic == "" || meaning == "" then return end
-
-        @memory.connect()
-        thoughts = @memory.load(topic)
-
-        authors = thoughts.select { |x| x[1] == topic && x[2] == meaning }.map { |x| x[0] }.uniq
-
-        if authors.size() > 1 then
-            return "*#{authors.join("*, *")}* #{formulation} that _#{topic}_ is _#{meaning}_."
-        end      
-        if authors.size() == 1 then
-            return "*#{authors[0]}* #{formulation} that _#{topic}_ is _#{meaning}_."
-        end
-
-        return "Nobody #{formulation} that."
 
     end
 

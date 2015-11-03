@@ -1,12 +1,14 @@
 #!/bin/env ruby
 # encoding: utf-8
 
+#: Rolls a dice, or something else.
+
 class Answer
 
-    # Available: moduleName,methodName,username,message
-
     def roll
+
         return dice
+
     end
 
     def dice

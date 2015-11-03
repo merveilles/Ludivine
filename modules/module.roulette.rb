@@ -1,12 +1,18 @@
 #!/bin/env ruby
 # encoding: utf-8
 
+#: Russian roulette game.
+
 class Answer
+
     def roulette
+
         "A game of russian roulette.\n`load` `spin` `pull`"
+
     end
 
     def load
+
         chamber = ''
 
         @memory.connect
@@ -20,9 +26,11 @@ class Answer
         if chamber.to_i > 0 then return 'There is already a bullet in the revolver.' end
         @memory.save('ludivine', 'roulette chamber', '100000'.split('').shuffle.join)
         'You put a bullet in the revolver. :japanese_ogre:'
+
     end
 
     def spin
+
         chamber = ''
 
         @memory.connect
@@ -35,9 +43,11 @@ class Answer
 
         @memory.save('ludivine', 'roulette chamber', chamber.split('').shuffle.join)
         "#{@username} spins the cylinder. :return:"
+
     end
 
     def bullets
+
         chamber = ''
 
         @memory.connect
@@ -68,9 +78,11 @@ class Answer
         end
 
         return message
+
     end
 
     def pull
+
         chamber = ''
 
         @memory.connect
@@ -100,4 +112,5 @@ class Answer
 
         "You pull the trigger, the gun goes.. *click*! :godmode:\nYou survived."
     end
+
 end

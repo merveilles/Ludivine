@@ -1,11 +1,11 @@
 #!/bin/env ruby
 # encoding: utf-8
 
+#: Simple module used as a tutorial.
+
 class Answer
 
-    # Available: moduleName,methodName,username,message
-
-    def calc # ludivine calc 1 + 2
+    def calc
 
         oper = @message.split(" ")[0]
         val1 = @message.split(" ")[1].to_i

@@ -1,16 +1,16 @@
+#!/bin/env ruby
+# encoding: utf-8
+
+#: Add things to my memory
+
 class Answer
 
-    def remember
+    def that
 
         @memory.connect()
-
-        if @message.split(" ")[1] == "that"
-            @message = @message.sub("that", "").strip
-        end
-        
-        @message = @message.sub("remember", "").strip
-        
-        termSplit = termToSplit(@message)
+        @message = @message.sub("remember that ", "").strip
+    
+        termSplit = _termToSplit(@message)
         name = termSplit[0]
         value = termSplit[1]
         term = termSplit[2]
@@ -21,14 +21,14 @@ class Answer
         
         if name != "" && value != "" && term != ""
             @memory.save(@username, name, value)
-            return "I will remember that *"+nlpResponse(name)+"*" + term + "*#{value}*."
+            return "I will remember that *"+_nlpResponse(name)+"*" + term + "*#{value}*."
         end
         
         return "What do you want me to remember #{@username}?"
 
     end
 
-    def nlpResponse words
+    def _nlpResponse words
 
         words = " "+words+" "
         words = words.sub(" my "," _your_ ")
@@ -41,7 +41,7 @@ class Answer
 
     end
     
-    def termToSplit(msg)
+    def _termToSplit(msg)
         terms = ["is", "are", "have", "has"]
         if msg.split(" ").length > 2
             for term in terms
