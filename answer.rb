@@ -22,7 +22,8 @@ class Answer
 
     def includeModule name
 
-        require_relative "modules/module."+name+".rb"
+        moduleLocation = "modules/module."+name+".rb"
+        require_relative(moduleLocation) 
 
     end
 
@@ -31,8 +32,10 @@ class Answer
         includeModule(@module_name)
         if self.respond_to?(@method_name)
             return self.send(@method_name)
+        elsif self.respond_to?(@module_name)
+            return self.send(@module_name)
         end
-        return self.send(@module_name)
+        return ""
 
     end
 
