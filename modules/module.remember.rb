@@ -21,11 +21,11 @@ class Answer
         match("you", "ludivine")
         match("your", "ludivine's")
         match("you're", "ludivine is")
-        match("yours" "ludivine's")
-        match("we" "merveilles")
-        match("us" "merveilles")
-        match("our" "merveilles'")
-        match("ours" "merveilles'")
+        match("yours", "ludivine's")
+        match("we", "merveilles")
+        match("us", "merveilles")
+        match("our", "merveilles'")
+        match("ours", "merveilles'")
 
         termSplit = _termToSplit(@message)
         name = termSplit[0]
