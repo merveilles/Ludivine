@@ -31,7 +31,7 @@ class Answer
     end
     
     def _termToSplit(msg)
-        terms = ["is", "are", "have", "has"]
+        terms = ["is", "are", "have", "has","am"]
         if msg.split(" ").length > 2
             for term in terms
                 parts = msg.split(/ #{term} /i)
