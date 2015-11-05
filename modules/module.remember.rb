@@ -9,23 +9,8 @@ class Answer
 
         @memory.connect()
         @message = @message.sub("remember that ", "").strip
-    
-        #concretize pronouns
-        def match(pronoun, content)
-            @message = @message.gsub(/(^|[ ,.])#{pronoun}([ ,.]|$)/i, '\1'+content+'\2')
-        end
-        match("me", @username)
-        match("my", @username+"'s")
-        match("mine", @username+"'s")
-        match("i", @username)
-        match("you", "ludivine")
-        match("your", "ludivine's")
-        match("you're", "ludivine is")
-        match("yours", "ludivine's")
-        match("we", "merveilles")
-        match("us", "merveilles")
-        match("our", "merveilles'")
-        match("ours", "merveilles'")
+
+        @message = _matchPronouns(@message)
 
         termSplit = _termToSplit(@message)
         name = termSplit[0]

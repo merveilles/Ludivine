@@ -45,4 +45,28 @@ class Answer
 
     end
 
+    def _matchPronouns string
+
+        @string = string
+        def match(pronoun, content)
+            @string = @string.gsub(/(^|[ ,.])#{pronoun}([ ,.]|$)/i, '\1'+content+'\2')
+        end
+
+        match("me", @username)
+        match("my", @username+"'s")
+        match("mine", @username+"'s")
+        match("i", @username)
+        match("you", "ludivine")
+        match("your", "ludivine's")
+        match("you're", "ludivine is")
+        match("yours",  "ludivine's")
+        match("we",  "merveilles")
+        match("us",  "merveilles")
+        match("our",  "merveilles'")
+        match("ours",  "merveilles'")
+
+        return @string
+
+    end
+
 end
