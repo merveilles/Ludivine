@@ -1,7 +1,7 @@
 #!/bin/env ruby
 # encoding: utf-8
 
-#: Add to the hourly reminders with _remember us to_
+#: Add to the hourly reminders with *ludivine remind us to*
 
 class Answer
 
